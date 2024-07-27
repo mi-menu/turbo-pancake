@@ -55,8 +55,11 @@ async function updateGodaddyDns(ip) {
 
 async function checkAndUpdateIp() {
     const newIp = await getPublicIp();
+    console.log(`Current IP: ${currentIp}`);
+    console.log(`New IP: ${newIp}`);
     if (newIp && newIp !== currentIp) {
         await updateGodaddyDns(newIp);
+        console.log(`IP changed from ${currentIp} to ${newIp}`);
         currentIp = newIp;
     } else {
         console.log('IP has not changed');
